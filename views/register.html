@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Proyecto Final</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/1p2QpFjBjCuFON8TAk5GVnMKB76Mb4" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="../assets/css/register.css">
+</head>
+<body>
+
+    <div class="register-wrapper">
+        <!-- Lado izquierdo: ilustración / branding -->
+        <div class="register-banner d-none d-lg-flex">
+            <div class="banner-content">
+                <div class="banner-icon">
+                    <i class="bi bi-bag-heart"></i>
+                </div>
+                <h2>Tu tienda de moda</h2>
+                <p>Registra tu cuenta y gestiona las ventas de tu tienda de ropa de forma rápida y organizada.</p>
+                <div class="banner-features">
+                    <div class="feature-item">
+                        <i class="bi bi-shop-window"></i>
+                        <span>Gestión de sucursales</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="bi bi-cart-check"></i>
+                        <span>Registro de ventas ágil</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="bi bi-tags"></i>
+                        <span>Control de inventario</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Círculos decorativos -->
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+
+        <!-- Lado derecho: formulario -->
+        <div class="register-form-section">
+            <div class="form-container">
+                <!-- Logo / título -->
+                <div class="form-header text-center">
+                    <div class="logo-circle">
+                        <i class="bi bi-handbag"></i>
+                    </div>
+                    <h1>Crear cuenta</h1>
+                    <p class="subtitle">Regístrate para gestionar tu tienda de ropa</p>
+                </div>
+
+                <!-- Formulario -->
+                <form id="registerForm" novalidate>
+                    <!-- Nombre completo -->
+                    <div class="form-floating-custom mb-4">
+                        <div class="input-icon-wrapper">
+                            <i class="bi bi-person-badge input-icon"></i>
+                            <input type="text" class="form-control custom-input" id="nombre"
+                                   placeholder="Nombre completo" required>
+                            <label for="nombre" class="custom-label">Nombre completo</label>
+                        </div>
+                        <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                    </div>
+
+                    <!-- Correo electrónico -->
+                    <div class="form-floating-custom mb-4">
+                        <div class="input-icon-wrapper">
+                            <i class="bi bi-envelope input-icon"></i>
+                            <input type="email" class="form-control custom-input" id="correo"
+                                   placeholder="correo@ejemplo.com" required>
+                            <label for="correo" class="custom-label">Correo electrónico</label>
+                        </div>
+                        <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="form-floating-custom mb-2">
+                        <div class="input-icon-wrapper">
+                            <i class="bi bi-key input-icon"></i>
+                            <input type="password" class="form-control custom-input" id="password"
+                                   placeholder="Contraseña" required minlength="6">
+                            <label for="password" class="custom-label">Contraseña</label>
+                            <button type="button" class="btn-toggle-pass" id="togglePassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                        <div class="invalid-feedback">La contraseña debe tener al menos 6 caracteres.</div>
+                    </div>
+
+                    <!-- Indicador de fuerza -->
+                    <div class="password-strength mb-4">
+                        <div class="strength-bars">
+                            <div class="strength-bar" id="bar1"></div>
+                            <div class="strength-bar" id="bar2"></div>
+                            <div class="strength-bar" id="bar3"></div>
+                            <div class="strength-bar" id="bar4"></div>
+                        </div>
+                        <small class="strength-text" id="strengthText">Fuerza de la contraseña</small>
+                    </div>
+
+                    <!-- Confirmar contraseña -->
+                    <div class="form-floating-custom mb-4">
+                        <div class="input-icon-wrapper">
+                            <i class="bi bi-key-fill input-icon"></i>
+                            <input type="password" class="form-control custom-input" id="confirmPassword"
+                                   placeholder="Confirmar contraseña" required>
+                            <label for="confirmPassword" class="custom-label">Confirmar contraseña</label>
+                        </div>
+                        <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+                    </div>
+
+                    <!-- Términos y condiciones -->
+                    <div class="form-check custom-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="terminos" required>
+                        <label class="form-check-label" for="terminos">
+                            Acepto los <a href="#" class="link-accent">Términos y Condiciones</a>
+                            y la <a href="#" class="link-accent">Política de Privacidad</a>
+                        </label>
+                    </div>
+
+                    <!-- Botón de registro -->
+                    <button type="submit" class="btn btn-register w-100" id="btnRegistrar">
+                        <span class="btn-text">Crear mi cuenta</span>
+                        <span class="btn-loader d-none">
+                        <i class="bi bi-arrow-right ms-2 btn-arrow"></i>
+                    </button>
+                </form>
+
+                <!-- Separador -->
+                <div class="divider my-4">
+                    <span>o regístrate con</span>
+                </div>
+
+                <!-- Botones sociales -->
+                <div class="social-buttons">
+                    <button class="btn btn-social btn-google" type="button">
+                        <i class="bi bi-google"></i>
+                        Google
+                    </button>
+                    <button class="btn btn-social btn-github" type="button">
+                        <i class="bi bi-github"></i>
+                        GitHub
+                    </button>
+                </div>
+
+                <!-- Link a login -->
+                <p class="text-center mt-4 login-link">
+                    ¿Ya tienes cuenta? <a href="../index.html" class="link-accent fw-semibold">Inicia sesión</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+
+    <!-- Controller del registro -->
+    <script src="../controllers/registerController.js"></script>
+</body>
+</html>

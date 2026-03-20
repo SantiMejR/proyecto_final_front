@@ -1,0 +1,560 @@
+/* ============================================
+   REGISTRO DE VENTA - Estilos personalizados
+   ============================================ */
+
+/* --- Variables de color (misma paleta) --- */
+:root {
+    --primary: #6C63FF;
+    --primary-dark: #5A52D5;
+    --primary-light: #8B83FF;
+    --accent: #FF6584;
+    --bg-light: #F8F9FE;
+    --bg-card: #FFFFFF;
+    --text-dark: #2D3748;
+    --text-muted: #8892A4;
+    --text-light: #A0AEC0;
+    --border-color: #E2E8F0;
+    --success: #48BB78;
+    --danger: #F56565;
+    --gradient-start: #6C63FF;
+    --gradient-end: #A855F7;
+    --shadow-sm: 0 2px 8px rgba(108, 99, 255, 0.08);
+    --shadow-md: 0 8px 30px rgba(108, 99, 255, 0.12);
+    --shadow-lg: 0 20px 60px rgba(108, 99, 255, 0.15);
+    --radius: 20px;
+    --radius-sm: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Reset y base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+    position: relative;
+    /* Background: imagen de tienda de ropa */
+    background:
+        url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1920&auto=format&fit=crop')
+        center/cover no-repeat fixed;
+}
+
+/* Overlay oscuro sobre el background */
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(108, 99, 255, 0.85) 0%,
+        rgba(124, 58, 237, 0.8) 40%,
+        rgba(45, 30, 80, 0.9) 100%
+    );
+    z-index: 0;
+    backdrop-filter: blur(2px);
+}
+
+/* ================================
+   NAVBAR
+   ================================ */
+.navbar-custom {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.navbar-custom .navbar-brand {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.3px;
+    transition: var(--transition);
+}
+
+.navbar-custom .navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.85);
+    transform: scale(1.02);
+}
+
+.navbar-custom .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-custom .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* ================================
+   CONTENIDO PRINCIPAL
+   ================================ */
+.main-content {
+    position: relative;
+    z-index: 5;
+    padding: 2.5rem 1rem 3rem;
+}
+
+/* --- Encabezado de página --- */
+.page-header {
+    margin-bottom: 2rem;
+    animation: fadeDown 0.5s ease-out;
+}
+
+/* --- Barra de bienvenida personalizada --- */
+.welcome-bar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 14px 22px;
+    margin-bottom: 1.5rem;
+    animation: slideRight 0.5s ease-out;
+}
+
+.welcome-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+.welcome-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-greeting {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.welcome-role {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.78rem;
+    margin-top: 2px;
+}
+
+.header-badge {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.8rem;
+    color: #fff;
+    animation: float 3s ease-in-out infinite;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+}
+
+/* ================================
+   TARJETA DE FORMULARIO
+   ================================ */
+.sale-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.6s ease-out;
+}
+
+/* --- Separadores de sección --- */
+.section-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(168, 85, 247, 0.05));
+    border-radius: 10px;
+    border-left: 4px solid var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.section-divider i {
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.section-divider span {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Selects y inputs personalizados --- */
+.select-wrapper {
+    position: relative;
+}
+
+.select-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.select-label i {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    transition: var(--transition);
+    cursor: pointer;
+    appearance: auto;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+}
+
+.custom-select:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    background-color: #f1f1f5;
+}
+
+.custom-select.is-invalid {
+    border-color: var(--danger);
+}
+
+.custom-select.is-invalid:focus {
+    box-shadow: 0 0 0 4px rgba(245, 101, 101, 0.1);
+}
+
+.custom-select.is-valid {
+    border-color: var(--success);
+}
+
+.invalid-feedback {
+    font-size: 0.78rem;
+    margin-top: 6px;
+}
+
+/* --- Input de costo --- */
+.cost-input-group {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    background: var(--bg-light);
+}
+
+.cost-input-group:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
+    background: #fff;
+}
+
+.cost-prefix {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 13px 16px;
+}
+
+.cost-input {
+    border: none !important;
+    padding: 13px 16px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.cost-input:focus {
+    box-shadow: none !important;
+}
+
+.cost-input::placeholder {
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+/* --- Resumen visual --- */
+.sale-summary {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.06), rgba(168, 85, 247, 0.04));
+    border: 2px dashed rgba(108, 99, 255, 0.2);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.summary-item i {
+    color: var(--primary);
+    font-size: 0.95rem;
+    width: 20px;
+    text-align: center;
+}
+
+.summary-item.highlight {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary);
+    padding-top: 8px;
+    border-top: 1px solid rgba(108, 99, 255, 0.15);
+    margin-top: 2px;
+}
+
+/* --- Botones --- */
+.form-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 0.5rem;
+}
+
+.btn-clear {
+    padding: 13px 28px;
+    border-radius: var(--radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    border: 2px solid var(--border-color);
+    background: #fff;
+    transition: var(--transition);
+}
+
+.btn-clear:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: rgba(245, 101, 101, 0.05);
+}
+
+.btn-submit {
+    padding: 13px 32px;
+    border-radius: var(--radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+    border: none;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    box-shadow: 0 8px 25px rgba(108, 99, 255, 0.25);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-submit:hover::before {
+    left: 100%;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(108, 99, 255, 0.35);
+    color: #fff;
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* --- Toast personalizado --- */
+.toast {
+    border-radius: var(--radius-sm);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+/* ================================
+   ANIMACIONES
+   ================================ */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
+}
+
+.shake {
+    animation: shake 0.4s ease;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 767.98px) {
+    .main-content {
+        padding: 1.5rem 0.5rem 2rem;
+    }
+
+    .sale-card {
+        padding: 1.5rem 1.2rem;
+        border-radius: 16px;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .header-badge {
+        width: 56px;
+        height: 56px;
+        font-size: 1.4rem;
+        border-radius: 16px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn-clear,
+    .btn-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .section-divider {
+        padding: 8px 12px;
+    }
+
+    .section-divider span {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .sale-card {
+        padding: 1.2rem 1rem;
+    }
+
+    .navbar-custom .navbar-brand {
+        font-size: 1rem;
+    }
+}

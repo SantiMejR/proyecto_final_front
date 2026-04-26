@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         const strengthText = document.getElementById('strengthText');
 
-        // Reset
         bars.forEach(bar => bar.className = 'strength-bar');
         strengthText.className = 'strength-text';
 
@@ -46,21 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (/[^A-Za-z0-9]/.test(value)) score++;
 
         let level, text;
-        if (score <= 1) {
-            level = 'weak';
-            text = 'Débil';
-        } else if (score <= 3) {
-            level = 'medium';
-            text = 'Media';
-        } else {
-            level = 'strong';
-            text = 'Fuerte';
-        }
+        if (score <= 1) { level = 'weak'; text = 'Débil'; }
+        else if (score <= 3) { level = 'medium'; text = 'Media'; }
+        else { level = 'strong'; text = 'Fuerte'; }
 
         const activeBars = level === 'weak' ? 1 : level === 'medium' ? 2 : 4;
-        for (let i = 0; i < activeBars; i++) {
-            bars[i].classList.add(level);
-        }
+        for (let i = 0; i < activeBars; i++) bars[i].classList.add(level);
 
         strengthText.textContent = text;
         strengthText.classList.add(level);
@@ -70,53 +60,52 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Limpiar validaciones previas
         form.querySelectorAll('.custom-input').forEach(input => {
             input.classList.remove('is-invalid', 'is-valid');
         });
 
         const nombre = document.getElementById('nombre');
+        const apellido = document.getElementById('apellido');
         const correo = document.getElementById('correo');
+        const telefono = document.getElementById('telefono');
+        const rol = document.getElementById('rol');
         const terminos = document.getElementById('terminos');
         let isValid = true;
 
         // Validar nombre
         if (!nombre.value.trim()) {
-            nombre.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            nombre.classList.add('is-valid');
-        }
+            nombre.classList.add('is-invalid'); isValid = false;
+        } else { nombre.classList.add('is-valid'); }
+
+        // Validar apellido
+        if (!apellido.value.trim()) {
+            apellido.classList.add('is-invalid'); isValid = false;
+        } else { apellido.classList.add('is-valid'); }
 
         // Validar correo
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(correo.value)) {
-            correo.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            correo.classList.add('is-valid');
-        }
+            correo.classList.add('is-invalid'); isValid = false;
+        } else { correo.classList.add('is-valid'); }
 
         // Validar contraseña
         if (passwordInput.value.length < 6) {
-            passwordInput.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            passwordInput.classList.add('is-valid');
-        }
+            passwordInput.classList.add('is-invalid'); isValid = false;
+        } else { passwordInput.classList.add('is-valid'); }
 
         // Validar confirmación
         if (confirmPasswordInput.value !== passwordInput.value || !confirmPasswordInput.value) {
-            confirmPasswordInput.classList.add('is-invalid');
-            isValid = false;
-        } else {
-            confirmPasswordInput.classList.add('is-valid');
-        }
+            confirmPasswordInput.classList.add('is-invalid'); isValid = false;
+        } else { confirmPasswordInput.classList.add('is-valid'); }
+
+        // Validar rol
+        if (!rol.value) {
+            rol.classList.add('is-invalid'); isValid = false;
+        } else { rol.classList.add('is-valid'); }
 
         // Validar términos
         if (!terminos.checked) {
-            terminos.classList.add('is-invalid');
-            isValid = false;
+            terminos.classList.add('is-invalid'); isValid = false;
         }
 
         if (!isValid) {
@@ -128,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Mostrar estado de carga
+        // Estado de carga
         const btnText = btnRegistrar.querySelector('.btn-text');
         const btnLoader = btnRegistrar.querySelector('.btn-loader');
         const btnArrow = btnRegistrar.querySelector('.btn-arrow');
@@ -137,31 +126,30 @@ document.addEventListener('DOMContentLoaded', () => {
         btnLoader.classList.remove('d-none');
         btnRegistrar.disabled = true;
 
-        // Preparar datos
-        const userData = {
+        // DTO que espera UsuarioCreateDTO en el back
+        const usuarioDto = {
             nombre: nombre.value.trim(),
-            correo: correo.value.trim(),
-            password: passwordInput.value
+            apellido: apellido.value.trim(),
+            email: correo.value.trim(),
+            password: passwordInput.value,
+            telefono: telefono.value.trim() || null,
+            rol: rol.value,
         };
 
-        console.log('Datos de registro:', userData);
-
-        // Simular envío (reemplazar con llamada real al servicio)
         try {
-            // TODO: Conectar con el servicio real
-            // const response = await registerService.register(userData);
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const creado = await api.usuarios.crear(usuarioDto);
 
-            // Guardar nombre del usuario en localStorage para personalizar la siguiente vista
-            localStorage.setItem('usuarioNombre', userData.nombre);
-            localStorage.setItem('usuarioCorreo', userData.correo);
+            // Persistir saludo para la siguiente vista
+            localStorage.setItem('usuarioNombre', `${creado.nombre} ${creado.apellido}`);
+            localStorage.setItem('usuarioCorreo', creado.email);
+            localStorage.setItem('usuarioId', creado.id);
 
-            // Redirigir al inicio de sesión
+            alert(`Usuario "${creado.nombre} ${creado.apellido}" registrado correctamente.`);
             window.location.href = '../index.html';
 
         } catch (error) {
             console.error('Error en el registro:', error);
-            alert('Hubo un error al registrar. Inténtalo de nuevo.');
+            alert('No se pudo registrar el usuario.\n' + error.message);
         } finally {
             btnText.classList.remove('d-none');
             btnArrow.classList.remove('d-none');
@@ -170,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Limpiar validación al escribir ---
     form.querySelectorAll('.custom-input').forEach(input => {
         input.addEventListener('input', () => {
             input.classList.remove('is-invalid');

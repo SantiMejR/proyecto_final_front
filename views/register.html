@@ -64,15 +64,30 @@
 
                 <!-- Formulario -->
                 <form id="registerForm" novalidate>
-                    <!-- Nombre completo -->
-                    <div class="form-floating-custom mb-4">
-                        <div class="input-icon-wrapper">
-                            <i class="bi bi-person-badge input-icon"></i>
-                            <input type="text" class="form-control custom-input" id="nombre"
-                                   placeholder="Nombre completo" required>
-                            <label for="nombre" class="custom-label">Nombre completo</label>
+                    <!-- Nombres y Apellidos -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="form-floating-custom mb-0">
+                                <div class="input-icon-wrapper">
+                                    <i class="bi bi-person-badge input-icon"></i>
+                                    <input type="text" class="form-control custom-input" id="nombre"
+                                           placeholder="Nombres" required>
+                                    <label for="nombre" class="custom-label">Nombres</label>
+                                </div>
+                                <div class="invalid-feedback">Ingresa tus nombres.</div>
+                            </div>
                         </div>
-                        <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                        <div class="col-md-6">
+                            <div class="form-floating-custom mb-0">
+                                <div class="input-icon-wrapper">
+                                    <i class="bi bi-person-badge input-icon"></i>
+                                    <input type="text" class="form-control custom-input" id="apellido"
+                                           placeholder="Apellidos" required>
+                                    <label for="apellido" class="custom-label">Apellidos</label>
+                                </div>
+                                <div class="invalid-feedback">Ingresa tus apellidos.</div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Correo electrónico -->
@@ -84,6 +99,35 @@
                             <label for="correo" class="custom-label">Correo electrónico</label>
                         </div>
                         <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                    </div>
+
+                    <!-- Teléfono y Rol -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <div class="form-floating-custom mb-0">
+                                <div class="input-icon-wrapper">
+                                    <i class="bi bi-telephone input-icon"></i>
+                                    <input type="tel" class="form-control custom-input" id="telefono"
+                                           placeholder="Teléfono (opcional)">
+                                    <label for="telefono" class="custom-label">Teléfono</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating-custom mb-0">
+                                <div class="input-icon-wrapper">
+                                    <i class="bi bi-shield-check input-icon"></i>
+                                    <select class="form-control custom-input" id="rol" required>
+                                        <option value="" disabled selected>Selecciona un rol</option>
+                                        <option value="CLIENTE">Cliente</option>
+                                        <option value="VENDEDOR">Vendedor</option>
+                                        <option value="ADMINISTRADOR">Administrador</option>
+                                    </select>
+                                    <label for="rol" class="custom-label">Rol</label>
+                                </div>
+                                <div class="invalid-feedback">Selecciona un rol.</div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Contraseña -->
@@ -169,6 +213,8 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
+    <!-- Cliente HTTP del back -->
+    <script src="../services/api.js"></script>
     <!-- Controller del registro -->
     <script src="../controllers/registerController.js"></script>
 </body>

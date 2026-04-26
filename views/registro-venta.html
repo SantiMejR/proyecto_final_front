@@ -5,25 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Venta | Proyecto Final</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/1p2QpFjBjCuFON8TAk5GVnMKB76Mb4" crossorigin="anonymous">
 
-    <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="../assets/css/registro-venta.css">
 </head>
 <body>
 
-    <!-- Background overlay -->
     <div class="bg-overlay"></div>
 
-    <!-- Navbar superior -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="../index.html">
@@ -49,13 +43,11 @@
         </div>
     </nav>
 
-    <!-- Contenido principal -->
     <main class="main-content">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10 col-xl-9">
+                <div class="col-lg-11 col-xl-10">
 
-                    <!-- Saludo personalizado -->
                     <div class="welcome-bar" id="welcomeBar">
                         <div class="welcome-avatar">
                             <i class="bi bi-person-circle"></i>
@@ -66,165 +58,100 @@
                         </div>
                     </div>
 
-                    <!-- Encabezado -->
                     <div class="page-header text-center">
                         <div class="header-badge">
                             <i class="bi bi-receipt-cutoff"></i>
                         </div>
                         <h1>Registro de Venta</h1>
-                        <p class="header-subtitle">Completa la información para registrar una nueva venta en el sistema</p>
+                        <p class="header-subtitle">Selecciona vendedor, cliente y los productos vendidos</p>
                     </div>
 
-                    <!-- Tarjeta del formulario -->
+                    <!-- Estado de conexión -->
+                    <div id="estadoConexion" class="text-center mb-3"></div>
+
                     <div class="sale-card">
                         <form id="ventaForm" novalidate>
-                            <div class="row g-4">
 
-                                <!-- ===== SECCIÓN: SUCURSAL ===== -->
-                                <div class="col-12">
-                                    <div class="section-divider">
-                                        <i class="bi bi-geo-alt-fill"></i>
-                                        <span>Información de Sucursal</span>
-                                    </div>
-                                </div>
-
-                                <!-- Centro Comercial -->
-                                <div class="col-md-6">
-                                    <div class="select-wrapper">
-                                        <label for="centroComercial" class="select-label">
-                                            <i class="bi bi-building"></i> Centro Comercial
-                                        </label>
-                                        <select class="form-select custom-select" id="centroComercial" required>
-                                            <option value="" disabled selected>Selecciona un centro comercial</option>
-                                            <option value="plaza-norte">Plaza Norte</option>
-                                            <option value="mega-plaza">Mega Plaza</option>
-                                            <option value="jockey-plaza">Jockey Plaza</option>
-                                            <option value="real-plaza">Real Plaza Salaverry</option>
-                                            <option value="plaza-san-miguel">Plaza San Miguel</option>
-                                            <option value="mall-aventura">Mall Aventura</option>
-                                            <option value="open-plaza">Open Plaza Angamos</option>
-                                        </select>
-                                        <div class="invalid-feedback">Selecciona un centro comercial.</div>
-                                    </div>
-                                </div>
-
-                                <!-- Local / Tienda -->
-                                <div class="col-md-6">
-                                    <div class="select-wrapper">
-                                        <label for="local" class="select-label">
-                                            <i class="bi bi-shop"></i> Local / Tienda
-                                        </label>
-                                        <select class="form-select custom-select" id="local" required disabled>
-                                            <option value="" disabled selected>Primero selecciona un centro comercial</option>
-                                        </select>
-                                        <div class="invalid-feedback">Selecciona un local.</div>
-                                    </div>
-                                </div>
-
-                                <!-- ===== SECCIÓN: VENDEDOR ===== -->
-                                <div class="col-12">
-                                    <div class="section-divider">
-                                        <i class="bi bi-person-badge-fill"></i>
-                                        <span>Datos del Vendedor</span>
-                                    </div>
-                                </div>
-
-                                <!-- Vendedor -->
+                            <!-- ===== VENDEDOR + CLIENTE ===== -->
+                            <div class="section-divider mb-3">
+                                <i class="bi bi-people-fill"></i>
+                                <span>Personas</span>
+                            </div>
+                            <div class="row g-4 mb-2">
                                 <div class="col-md-6">
                                     <div class="select-wrapper">
                                         <label for="vendedor" class="select-label">
-                                            <i class="bi bi-person"></i> Vendedor
+                                            <i class="bi bi-person-badge"></i> Vendedor
                                         </label>
                                         <select class="form-select custom-select" id="vendedor" required>
-                                            <option value="" disabled selected>Selecciona un vendedor</option>
-                                            <option value="1">Carlos García López</option>
-                                            <option value="2">María Fernández Ruiz</option>
-                                            <option value="3">Juan Rodríguez Pérez</option>
-                                            <option value="4">Ana Torres Mendoza</option>
-                                            <option value="5">Luis Herrera Sánchez</option>
-                                            <option value="6">Sofía Castillo Vargas</option>
-                                            <option value="7">Diego Morales Cruz</option>
-                                            <option value="8">Valentina Ríos Paredes</option>
+                                            <option value="" disabled selected>Cargando vendedores...</option>
                                         </select>
                                         <div class="invalid-feedback">Selecciona un vendedor.</div>
                                     </div>
                                 </div>
-
-                                <!-- Fecha de Registro -->
                                 <div class="col-md-6">
                                     <div class="select-wrapper">
-                                        <label for="fechaRegistro" class="select-label">
-                                            <i class="bi bi-calendar-event"></i> Fecha de Registro
+                                        <label for="cliente" class="select-label">
+                                            <i class="bi bi-person-heart"></i> Cliente
                                         </label>
-                                        <input type="date" class="form-control custom-select" id="fechaRegistro" required>
-                                        <div class="invalid-feedback">Selecciona una fecha válida.</div>
+                                        <select class="form-select custom-select" id="cliente" required>
+                                            <option value="" disabled selected>Cargando clientes...</option>
+                                        </select>
+                                        <div class="invalid-feedback">Selecciona un cliente.</div>
                                     </div>
                                 </div>
-
-                                <!-- ===== SECCIÓN: PRODUCTO ===== -->
-                                <div class="col-12">
-                                    <div class="section-divider">
-                                        <i class="bi bi-tag-fill"></i>
-                                        <span>Detalle del Producto</span>
-                                    </div>
-                                </div>
-
-                                <!-- Costo Total -->
-                                <div class="col-md-6">
-                                    <div class="select-wrapper">
-                                        <label for="costoTotal" class="select-label">
-                                            <i class="bi bi-currency-dollar"></i> Costo Total del Producto
-                                        </label>
-                                        <div class="input-group cost-input-group">
-                                            <span class="input-group-text cost-prefix">COP $</span>
-                                            <input type="number" class="form-control custom-select cost-input"
-                                                   id="costoTotal" placeholder="0.00" min="0" step="0.01" required>
-                                        </div>
-                                        <div class="invalid-feedback">Ingresa un costo válido mayor a 0.</div>
-                                    </div>
-                                </div>
-
-                                <!-- Resumen visual -->
-                                <div class="col-md-6 d-flex align-items-end">
-                                    <div class="sale-summary" id="saleSummary">
-                                        <div class="summary-item">
-                                            <i class="bi bi-building"></i>
-                                            <span id="summCentro">—</span>
-                                        </div>
-                                        <div class="summary-item">
-                                            <i class="bi bi-shop"></i>
-                                            <span id="summLocal">—</span>
-                                        </div>
-                                        <div class="summary-item">
-                                            <i class="bi bi-person"></i>
-                                            <span id="summVendedor">—</span>
-                                        </div>
-                                        <div class="summary-item highlight">
-                                            <i class="bi bi-cash-stack"></i>
-                                            <span id="summCosto">COP $ 0</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Botones -->
-                                <div class="col-12">
-                                    <div class="form-actions">
-                                        <button type="button" class="btn btn-clear" id="btnLimpiar">
-                                            <i class="bi bi-arrow-counterclockwise me-2"></i>Limpiar
-                                        </button>
-                                        <button type="submit" class="btn btn-submit" id="btnRegistrarVenta">
-                                            <span class="btn-text">
-                                                <i class="bi bi-check-circle me-2"></i>Registrar Venta
-                                            </span>
-                                            <span class="btn-loader d-none">
-                                                <span class="spinner-border spinner-border-sm me-2"></span>
-                                                Registrando...
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-
                             </div>
+
+                            <!-- ===== PRODUCTOS ===== -->
+                            <div class="section-divider mt-4 mb-3">
+                                <i class="bi bi-tag-fill"></i>
+                                <span>Productos</span>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table align-middle tabla-productos">
+                                    <thead>
+                                        <tr>
+                                            <th style="min-width:220px;">Producto</th>
+                                            <th class="text-end" style="width:140px;">Precio unit.</th>
+                                            <th style="width:120px;">Cantidad</th>
+                                            <th class="text-end" style="width:140px;">Subtotal</th>
+                                            <th style="width:60px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="filasProductos">
+                                        <!-- Las filas se agregan dinamicamente -->
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3" class="text-end fw-semibold">Total:</td>
+                                            <td class="text-end fw-bold" id="totalVenta">COP $ 0</td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <button type="button" class="btn btn-add-row" id="btnAgregarProducto">
+                                <i class="bi bi-plus-circle me-1"></i>Agregar producto
+                            </button>
+
+                            <!-- Botones -->
+                            <div class="form-actions mt-4">
+                                <button type="button" class="btn btn-clear" id="btnLimpiar">
+                                    <i class="bi bi-arrow-counterclockwise me-2"></i>Limpiar
+                                </button>
+                                <button type="submit" class="btn btn-submit" id="btnRegistrarVenta">
+                                    <span class="btn-text">
+                                        <i class="bi bi-check-circle me-2"></i>Registrar Venta
+                                    </span>
+                                    <span class="btn-loader d-none">
+                                        <span class="spinner-border spinner-border-sm me-2"></span>
+                                        Registrando...
+                                    </span>
+                                </button>
+                            </div>
+
                         </form>
                     </div>
 
@@ -246,12 +173,11 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-    <!-- Controller -->
+    <script src="../services/api.js"></script>
     <script src="../controllers/registroVentaController.js"></script>
 </body>
 </html>

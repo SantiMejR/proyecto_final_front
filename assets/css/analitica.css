@@ -1,0 +1,215 @@
+/* ============================================
+   ANALITICA - Estilos personalizados
+   ============================================ */
+
+:root {
+    --primary: #6C63FF;
+    --primary-dark: #5A52D5;
+    --accent: #FF6584;
+    --bg-light: #F8F9FE;
+    --bg-card: #FFFFFF;
+    --text-dark: #2D3748;
+    --text-muted: #8892A4;
+    --border-color: #E2E8F0;
+    --shadow-sm: 0 2px 8px rgba(108, 99, 255, 0.08);
+    --shadow-md: 0 8px 30px rgba(108, 99, 255, 0.12);
+    --radius: 18px;
+    --radius-sm: 10px;
+    --transition: all 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    min-height: 100vh;
+    position: relative;
+    background:
+        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1920&auto=format&fit=crop')
+        center/cover no-repeat fixed;
+}
+
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(108, 99, 255, 0.88) 0%,
+        rgba(124, 58, 237, 0.82) 40%,
+        rgba(30, 25, 70, 0.92) 100%
+    );
+    z-index: 0;
+    backdrop-filter: blur(2px);
+}
+
+/* --- Navbar (consistente con las otras vistas) --- */
+.navbar-custom {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    padding: 0.8rem 0;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.25rem;
+}
+
+.navbar-custom .nav-link {
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: var(--transition);
+    border-radius: 8px;
+    padding: 0.4rem 0.9rem !important;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: var(--primary);
+    background: rgba(108, 99, 255, 0.08);
+}
+
+/* --- Contenido --- */
+.main-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 0 4rem;
+}
+
+.page-header {
+    color: #fff;
+}
+
+.page-header h1 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.page-header .subtitle {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* --- Paneles --- */
+.panel,
+.bloque {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 1.5rem;
+}
+
+.bloque h3 {
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.bloque h5 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.bloque code {
+    background: rgba(108, 99, 255, 0.1);
+    color: var(--primary-dark);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* --- Botones de accion --- */
+.btn-accion {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.2rem;
+    font-weight: 500;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-accion:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    color: #fff;
+}
+
+.btn-accion.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* --- Tablas insertadas desde pandas --- */
+.tabla-wrap {
+    max-height: 380px;
+    overflow: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: #fff;
+}
+
+.tabla-wrap table.tabla,
+.tabla-wrap table.dataframe {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+}
+
+.tabla-wrap th,
+.tabla-wrap td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.tabla-wrap thead th {
+    background: var(--bg-light);
+    color: var(--primary-dark);
+    position: sticky;
+    top: 0;
+    font-weight: 600;
+}
+
+.tabla-wrap tbody tr:hover {
+    background: rgba(108, 99, 255, 0.04);
+}
+
+/* --- Graficos --- */
+.grafico-card {
+    background: var(--bg-light);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    text-align: center;
+    height: 100%;
+}
+
+.grafico-card h6 {
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.grafico-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+/* --- Estado del servicio --- */
+#estadoServicio code {
+    background: rgba(108, 99, 255, 0.08);
+    padding: 0.05rem 0.35rem;
+    border-radius: 4px;
+}

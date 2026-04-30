@@ -19,6 +19,12 @@ async function _request(path, options = {}) {
 }
 
 const api = {
+    auth: {
+        login: (email, password) => _request('/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+        }),
+    },
     usuarios: {
         listar: () => _request('/usuarios'),
         obtener: (id) => _request(`/usuarios/${id}`),

@@ -1,0 +1,17 @@
+# Editores e IDEs
+.claude/
+.idea/
+.vscode/
+.cursor/
+*.iml
+
+# Sistema operativo
+Thumbs.db
+.DS_Store
+
+# Logs y temporales
+*.log
+*.tmp
+
+# Dependencias de Node (si las agregas a futuro)
+node_modules/

@@ -65,24 +65,26 @@ document.addEventListener('DOMContentLoaded', () => {
         btnLoader.classList.remove('d-none');
         btn.disabled = true;
 
-        const loginData = {
-            correo: correo.value.trim(),
-            password: password.value
-        };
-
-        console.log('Datos de login:', loginData);
-
         try {
-            // TODO: Conectar con el servicio de autenticación real
-            // const response = await authService.login(loginData);
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Valida contra el back: si el correo no esta en H2 o el password
+            // no coincide, el back devuelve 400 y caemos al catch.
+            const usuario = await api.auth.login(correo.value.trim(), password.value);
 
-            // Redirigir a la vista de registro de ventas después del login
+            // Persistir saludo y datos basicos
+            localStorage.setItem('usuarioId', usuario.id);
+            localStorage.setItem('usuarioNombre', `${usuario.nombre} ${usuario.apellido}`);
+            localStorage.setItem('usuarioCorreo', usuario.email);
+            localStorage.setItem('usuarioRol', usuario.rol);
+
+            // Redirigir tras login exitoso
             window.location.href = 'views/registro-venta.html';
 
         } catch (error) {
             console.error('Error en el login:', error);
-            alert('Credenciales incorrectas. Inténtalo de nuevo.');
+            correo.classList.add('is-invalid');
+            password.classList.add('is-invalid');
+            alert('Credenciales invalidas o el usuario no esta registrado.\n\n' +
+                  'Si aun no tienes cuenta, registrate primero.');
         } finally {
             btnText.classList.remove('d-none');
             btnArrow.classList.remove('d-none');
